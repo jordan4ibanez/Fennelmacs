@@ -27,7 +27,8 @@ This version of Emacs is tailored as much as I can to behave like VSCode and Fen
 
 ### How to install:
 
-;; Todo: put luajit install instructions here!
+;; TODO: put luajit install instructions here!
+;; TODO: put fennel install instructions here!
 
 Make sure you have no ``.emacs.d`` folder! If you do, back it up.
 
