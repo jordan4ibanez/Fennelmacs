@@ -10,7 +10,7 @@
 (print "Welcome to Vmacs!" #'external-debugging-output)
 
 ;; I hope the user followed the directions or this ain't gonna work. :T
-(add-to-list 'load-path "~/.emacs.d/vmacs/")
+(add-to-list 'load-path "~/.emacs.d/fennelmacs/")
 
 ;; This will automatically fix use-package not being installed!
 (let ((cool-file ".vmacs-fully-initialized"))
@@ -103,7 +103,7 @@
 ;; So all this is doing is building a string based on expressions!
 (setq frame-title-format
     `((buffer-file-name "%b - ")
-      "Vmacs"))
+      "Fennelmacs"))
 
 ;; We gotta start with the theme maaaan. Doom-one is the absolute nicest out there.
 ;;pd Doom themes
@@ -373,10 +373,10 @@
       (setq dashboard-center-content t)
 
       ;; Set dashboard title.
-      (setq dashboard-banner-logo-title "Welcome to Vmacs!")
+      (setq dashboard-banner-logo-title "Welcome to Fennelmacs!")
 
       ;; Set the banner.
-      (setq dashboard-startup-banner "~/.emacs.d/vmacs/vmacs-logo.txt")
+      (setq dashboard-startup-banner "~/.emacs.d/fennelmacs/fennelmacs-logo.txt")
 
       (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
       (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
@@ -385,7 +385,7 @@
       (setq dashboard-set-file-icons t)
 
       ;; Useful things in dashboard
-      (setq dashboard-footer-messages '("Now with extra lisp!"))))
+      (setq dashboard-footer-messages '("Is it lua, or is it lisp?"))))
 
 
 ;;pd CTRLF
