@@ -224,6 +224,7 @@
   (interactive)
   (list
    (cond ((or (vmacs-match "*dashboard*")
+              (vmacs-match "*Fennel REPL*")
               (vmacs-match "*ansi-term")
               (vmacs-match "*ansi-term<2>")
               (vmacs-match "*ansi-term<3>")
