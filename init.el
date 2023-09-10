@@ -223,10 +223,7 @@
 (defun centaur-tabs-buffer-groups ()
   (interactive)
   (list
-   (cond ((or (vmacs-match "*sly-inferior-lisp for sbcl*")
-              (vmacs-match "*dashboard*")
-              (vmacs-match "*sly-mrepl for sbcl*")
-              (vmacs-match "*sly-events for sbcl")
+   (cond ((or (vmacs-match "*dashboard*")
               (vmacs-match "*ansi-term")
               (vmacs-match "*ansi-term<2>")
               (vmacs-match "*ansi-term<3>")
@@ -408,9 +405,9 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
  '(package-selected-packages
-   '(use-package markdown-mode hl-todo paredit kind-icon corfu sly diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
+   '(use-package markdown-mode hl-todo paredit kind-icon corfu diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 
-;;yell !!!! Common Lisp POWER PACK WOO!!!!
+;;yell !!!! Fennel POWER PACK WOO!!!!
 
 ;;pd diff-hl
 ;;note: shows unmerged line changes
@@ -422,8 +419,6 @@
 
 ;;pd SLY
 ;;note: Vmacs Common Lisp REPL
-(use-package sly :ensure t)
-(setq inferior-lisp-program "sbcl")
 
 ;;pd corfu
 ;;note: autocomplete
@@ -464,7 +459,7 @@
 
 (if (= vmacs-parentheses-helper 1)
     ;;pd ParEdit
-    ;;note: Enforce Common Lisp bracket styling
+    ;;note: Enforce Fennel bracket styling
     (progn 
       (use-package paredit :ensure t)
       (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -748,19 +743,19 @@
 ;;! Best for debugging/prototyping.
 ;; Eval a function: CTRL+D
 ;; Eval a file: CTRL+R
-(defun start-sly-in-treemacs-root-dir ()
-  (interactive)
-  (progn
-    (let ((default-directory (treemacs--current-builtin-project-function)))
-      (print default-directory #'external-debugging-output)
-      (sly))))
+;; (defun start-sly-in-treemacs-root-dir ()
+;;   (interactive)
+;;   (progn
+;;     (let ((default-directory (treemacs--current-builtin-project-function)))
+;;       (print default-directory #'external-debugging-output)
+;;       (sly))))
 
-(with-eval-after-load 'sly
-  (progn
-    (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
-    (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
-    (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
-    (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
+;; (with-eval-after-load 'sly
+;;   (progn
+;;     (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
+;;     (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
+;;     (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
+;;     (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
 
 ;; Fix home key not going to beggining of line's text!
 (define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
