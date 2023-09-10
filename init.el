@@ -747,19 +747,24 @@
 ;;! Best for debugging/prototyping.
 ;; Eval a function: CTRL+D
 ;; Eval a file: CTRL+R
-;; (defun start-sly-in-treemacs-root-dir ()
-;;   (interactive)
-;;   (progn
-;;     (let ((default-directory (treemacs--current-builtin-project-function)))
-;;       (print default-directory #'external-debugging-output)
-;;       (sly))))
+(defun fennelmacs-reload-file ()
+  (interactive)
+  ;; We have to save the cursor position
+  (let ((old-position (point)))
+    (mark-whole-buffer)
+    (lisp-eval-region (region-beginning) (region-end))
+    ;; Undo the region
+    (deactivate-mark)
+    ;; Now move the cursor back
+    (goto-char old-position)))
+    ;; )) ;; fennel-reload
 
 (with-eval-after-load 'fennel-mode
   (progn
     (define-key ergoemacs-user-keymap (kbd "<f12>") 'fennel-repl)
     ;; (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
-    (define-key ergoemacs-user-keymap (kbd "C-d") 'lisp-eval-last-sexp)
-    (define-key ergoemacs-user-keymap (kbd "C-r") 'lisp-eval-defun)))
+    (define-key ergoemacs-user-keymap (kbd "C-r") 'fennelmacs-reload-file)
+    (define-key ergoemacs-user-keymap (kbd "C-d") 'lisp-eval-defun)))
 
 ;; Fix home key not going to beggining of line's text!
 (define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
