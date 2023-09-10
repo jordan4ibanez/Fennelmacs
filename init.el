@@ -757,14 +757,13 @@
     (deactivate-mark)
     ;; Now move the cursor back
     (goto-char old-position)))
-    ;; )) ;; fennel-reload
 
 (with-eval-after-load 'fennel-mode
   (progn
     (define-key ergoemacs-user-keymap (kbd "<f12>") 'fennel-repl)
     ;; (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
     (define-key ergoemacs-user-keymap (kbd "C-r") 'fennelmacs-reload-file)
-    (define-key ergoemacs-user-keymap (kbd "C-d") 'lisp-eval-defun)))
+    (define-key ergoemacs-user-keymap (kbd "C-d") 'lisp-eval-last-sexp)))
 
 ;; Fix home key not going to beggining of line's text!
 (define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
