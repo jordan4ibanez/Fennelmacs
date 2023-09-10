@@ -44,7 +44,7 @@ emacs
 
 Fennelmacs will start to automatically install. Might take a minute.
 
-Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented/deprecated functions etc) and then close and open back up emacs.
+Once it gets to the dashboard, let all the warnings finish (wrongly documented/deprecated functions etc) and then close and open back up emacs.
 
 After this, you can startup emacs like normal.
 
@@ -99,7 +99,7 @@ NOTE: Document this!
 
 ;; Lispy stuff!
 
-[SLY](https://github.com/joaotavora/sly) (Common Lisp SBCL REPL)
+[fennel-mode](https://github.com/emacsmirror/fennel-mode) (A mode for fennel)
 
 [ParEdit](https://www.emacswiki.org/emacs/ParEdit)
 **OR**
