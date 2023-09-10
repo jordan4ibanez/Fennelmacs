@@ -1,4 +1,4 @@
-# Vmacs
+# Fennelmacs
  My attempt to turn Emacs into VSCode
 ```
       ___           ___           ___           ___           ___           ___       ___           ___           ___           ___     
@@ -23,30 +23,25 @@ First there was emacs, then there was evil mode, crazy mode after that.
 
 I present to you: Lazy mode.
 
-This version of Emacs is tailored as much as I can to behave like VSCode and Common Lisp development.
-
-Here is a video on it: https://youtu.be/Q3ez5Aw_7nY
+This version of Emacs is tailored as much as I can to behave like VSCode and Fennel development.
 
 ### How to install:
-It is expected that you have SBCL installed and in your system path.
 
-If you're unsure of this, try running ``sbcl`` in your terminal/command prompt.
+;; Todo: put luajit install instructions here!
 
 Make sure you have no ``.emacs.d`` folder! If you do, back it up.
 
 For first time startup, run this: (it's so treemacs doesn't open your home folder as a project on first startup)
 
 ```
-git clone https://github.com/jordan4ibanez/Vmacs.git ~/.emacs.d/
+git clone https://github.com/jordan4ibanez/Fennelmacs.git ~/.emacs.d/
 
 cd ~/.emacs.d/
 
 emacs
 ```
 
-Or if you'd like to watch a video on how to install: https://youtu.be/88xj_45Dpzg
-
-Vmacs will start to automatically install. Might take a minute.
+Fennelmacs will start to automatically install. Might take a minute.
 
 Once it gets to the dashboard, let all the warnings with SLIME finish (wrongly documented/deprecated functions etc) and then close and open back up emacs.
 
