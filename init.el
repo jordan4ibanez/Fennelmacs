@@ -404,8 +404,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode 1)
+ '(ispell-dictionary nil)
  '(package-selected-packages
-   '(use-package markdown-mode hl-todo paredit kind-icon corfu diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
+   '(fennel-mode use-package markdown-mode hl-todo paredit kind-icon corfu diff-hl real-auto-save treemacs treemacs-tab-bar treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired rainbow-delimiters highlight-parentheses ergoemacs-mode doom-themes dashboard centaur-tabs)))
 
 ;;yell !!!! Fennel POWER PACK WOO!!!!
 
@@ -417,8 +418,10 @@
 (global-diff-hl-mode)
 
 
-;;pd SLY
-;;note: Vmacs Common Lisp REPL
+;;pd Fennel-mode
+;;note: Fennelmacs Fennel REPL and everything
+(use-package fennel-mode :ensure t)
+(add-to-list 'auto-mode-alist '("\\.fnl\\'" . fennel-mode))
 
 ;;pd corfu
 ;;note: autocomplete
@@ -468,7 +471,8 @@
       (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
       (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
       (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-      (add-hook 'scheme-mode-hook           #'enable-paredit-mode)))
+      (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+      (add-hook 'fennel-mode-hook           #'enable-paredit-mode)))
 
 ;;pd smartparens
 ;;note: Enforce common lisp bracket styling with nice evolution from ParEdit
@@ -750,12 +754,12 @@
 ;;       (print default-directory #'external-debugging-output)
 ;;       (sly))))
 
-;; (with-eval-after-load 'sly
-;;   (progn
-;;     (define-key ergoemacs-user-keymap (kbd "<f12>") 'start-sly-in-treemacs-root-dir)
-;;     (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
-;;     (define-key ergoemacs-user-keymap (kbd "C-d") 'sly-eval-defun)
-;;     (define-key ergoemacs-user-keymap (kbd "C-r") 'sly-eval-buffer)))
+(with-eval-after-load 'fennel-mode
+  (progn
+    (define-key ergoemacs-user-keymap (kbd "<f12>") 'fennel-repl)
+    ;; (define-key ergoemacs-user-keymap (kbd "C-g") 'sly-compile-and-load-file)
+    (define-key ergoemacs-user-keymap (kbd "C-d") 'lisp-eval-last-sexp)
+    (define-key ergoemacs-user-keymap (kbd "C-r") 'lisp-eval-defun)))
 
 ;; Fix home key not going to beggining of line's text!
 (define-key ergoemacs-user-keymap (kbd "<home>") 'back-to-indentation)
